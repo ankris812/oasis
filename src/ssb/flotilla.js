@@ -1,6 +1,7 @@
 const stack = require("secret-stack");
 const debug = require("debug")("oasis");
 const ssbConfig = require("ssb-config");
+process.env.NODE_OPTIONS = '--no-experimental-fetch';
 
 const plugins = [
   // Authentication often hooked for authentication.
