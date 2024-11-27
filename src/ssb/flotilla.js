@@ -32,14 +32,20 @@ const plugins = [
 
 module.exports = (config) => {
   const server = stack();
-  const walk = (input) => {
-    if (Array.isArray(input)) {
-      input.forEach(walk);
-    } else {
-      debug(input.name || "???");
+const walk = (input) => {
+  if (Array.isArray(input)) {
+    input.forEach(walk);
+  } else {
+    try {
+      debug(`Cargando plugin: ${input.name || 'sin nombre'}`);
       server.use(input);
+    } catch (err) {
+      debug(`Error al cargar el plugin: ${input.name || 'sin nombre'}`);
+      console.error('Error al cargar plugin:', input);
+      console.error(err);
     }
-  };
+  }
+};
 
   walk(plugins);
 
