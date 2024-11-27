@@ -37,15 +37,18 @@ const walk = (input) => {
     input.forEach(walk);
   } else {
     try {
-      debug(input.name || "???");
+      // Muestra el nombre del plugin (si tiene)
+      console.log(`Cargando plugin: ${input.name || '???'}`);
+      
+      // Verifica si el plugin tiene el método init
       if (input && typeof input.init === 'function') {
         server.use(input);
       } else {
         console.warn(`Plugin ${input.name || '???'} no tiene método 'init'`);
       }
     } catch (err) {
-      console.error(`Error cargando el plugin: ${input.name || '???'}`, err);
-      throw err; // Lanza el error para que sea capturado en la traza general
+      console.error(`Error al cargar plugin: ${input.name || '???'}`, err);
+      throw err; // Lanza el error para que se capture en la traza general
     }
   }
 };
