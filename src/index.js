@@ -4,7 +4,7 @@
 
 // Minimum required to get config
 const path = require("path");
-const envPaths = require("env-paths");
+const envPaths = require('env-paths').default;
 const cli = require("./cli");
 const fs = require("fs");
 const exif = require("piexifjs");
