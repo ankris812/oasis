@@ -40,8 +40,11 @@ const walk = (input) => {
       // Muestra el nombre del plugin (si tiene)
       console.log(`Cargando plugin: ${input.name || '???'}`);
       
-      // Verifica si el plugin tiene el método init
-      if (input && typeof input.init === 'function') {
+      // Skip the `init` check for ssb-tangle or any other special plugin
+      if (input && input.name === 'ssb-tangle') {
+        console.log('Skipping init check for ssb-tangle');
+        server.use(input); // Use ssb-tangle without calling init
+      } else if (input && typeof input.init === 'function') {
         server.use(input);
       } else {
         console.warn(`Plugin ${input.name || '???'} no tiene método 'init'`);
