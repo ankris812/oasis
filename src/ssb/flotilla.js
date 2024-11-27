@@ -25,7 +25,7 @@ const plugins = [
   require("ssb-query"),
   require("ssb-room/tunnel/client"),
   require("ssb-search"),
-  require("ssb-tangle"),
+  require("@tangle/graph"),
   require("ssb-unix-socket"),
   require("ssb-ws"),
 ];
