@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 "use strict";
-const open = require('open');
+const { exec } = require('child_process');
 
 // Minimum required to get config
 const path = require("path");
@@ -1133,5 +1133,9 @@ module.exports = app;
 log(`Listening on ${url}`);
 
 if (config.open === true) {
-  open(url);
+  // Comando según el sistema operativo
+  const command = process.platform === 'win32' ? 'start' :
+                  process.platform === 'darwin' ? 'open' : 'xdg-open';
+
+  exec(`${command} ${url}`);
 }
