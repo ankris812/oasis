@@ -146,7 +146,7 @@ process.argv = [];
 
 const http = require("./http");
 
-const koaBody = require("koa-body");
+const koaBody = require('koa-body').default || require('koa-body');
 const { nav, ul, li, a } = require("hyperaxe");
 const open = require("open");
 const pull = require("pull-stream");
