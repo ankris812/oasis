@@ -10,7 +10,7 @@ const {
   li,
 } = require("hyperaxe");
 
-const envPaths = require("env-paths");
+const envPaths = require('env-paths').default;
 const cli = require("./cli");
 const ssb = require("./ssb");
 const defaultConfig = {};
