@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 "use strict";
+const open = require('open');
 
 // Minimum required to get config
 const path = require("path");
